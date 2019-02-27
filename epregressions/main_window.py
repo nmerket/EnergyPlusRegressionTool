@@ -3,6 +3,7 @@
 from datetime import datetime  # datetime allows us to generate timestamps for the log
 import glob
 import json
+from multiprocessing import cpu_count
 import os
 import random
 import subprocess  # subprocess allows us to spawn the help pdf separately
@@ -602,7 +603,7 @@ class RegressionGUI(Gtk.Window):
         if platform() != Platforms.Windows:
             num_threads_box = Gtk.HBox(homogeneous=False, spacing=box_spacing)
             self.suite_option_num_threads = Gtk.SpinButton()
-            self.suite_option_num_threads.set_range(1, 8)
+            self.suite_option_num_threads.set_range(1, cpu_count())
             self.suite_option_num_threads.set_increments(1, 4)
             self.suite_option_num_threads.spin(Gtk.SpinType.PAGE_FORWARD, 1)
             self.suite_option_num_threads.connect("value-changed", self.suite_option_handler_num_threads)

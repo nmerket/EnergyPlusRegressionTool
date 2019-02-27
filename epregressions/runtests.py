@@ -208,7 +208,7 @@ class SuiteRunner:
 
                 # read in the entire text of the idf to do some special operations;
                 # could put in one line, but the with block ensures the file handle is closed
-                with io.open(os.path.join(test_run_directory, self.ep_in_filename), encoding='utf-8') as f_idf:
+                with io.open(os.path.join(test_run_directory, self.ep_in_filename), encoding='utf-8', errors='ignore') as f_idf:
                     idf_text = f_idf.read()  # EDWIN: Make sure this reads the IDF properly
                     # idf_text = unicode(idf_text, errors='ignore')
 
